@@ -1,15 +1,17 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F2C07BD4-E203-46CE-9845-1C82C47BB04A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionService", "src\AuctionService\AuctionService.csproj", "{458030DB-C71C-46EB-A003-A9C7ECAEAFB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuctionService", "src\AuctionService\AuctionService.csproj", "{458030DB-C71C-46EB-A003-A9C7ECAEAFB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchService", "src\SearchService\SearchService.csproj", "{5C0B8A8C-9419-4C3A-8F98-0AF9175E22DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchService", "src\SearchService\SearchService.csproj", "{5C0B8A8C-9419-4C3A-8F98-0AF9175E22DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "src\Contracts\Contracts.csproj", "{35FE836B-7B97-4767-A0F8-EBB78E092896}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "src\Contracts\Contracts.csproj", "{35FE836B-7B97-4767-A0F8-EBB78E092896}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService", "src\IdentityService\IdentityService.csproj", "{17F6BDB0-105E-4ADC-B325-B5750893DA09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,10 +34,15 @@ Global
 		{35FE836B-7B97-4767-A0F8-EBB78E092896}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35FE836B-7B97-4767-A0F8-EBB78E092896}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35FE836B-7B97-4767-A0F8-EBB78E092896}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17F6BDB0-105E-4ADC-B325-B5750893DA09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17F6BDB0-105E-4ADC-B325-B5750893DA09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17F6BDB0-105E-4ADC-B325-B5750893DA09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17F6BDB0-105E-4ADC-B325-B5750893DA09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{458030DB-C71C-46EB-A003-A9C7ECAEAFB7} = {F2C07BD4-E203-46CE-9845-1C82C47BB04A}
 		{5C0B8A8C-9419-4C3A-8F98-0AF9175E22DD} = {F2C07BD4-E203-46CE-9845-1C82C47BB04A}
 		{35FE836B-7B97-4767-A0F8-EBB78E092896} = {F2C07BD4-E203-46CE-9845-1C82C47BB04A}
+		{17F6BDB0-105E-4ADC-B325-B5750893DA09} = {F2C07BD4-E203-46CE-9845-1C82C47BB04A}
 	EndGlobalSection
 EndGlobal
