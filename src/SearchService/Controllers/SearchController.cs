@@ -2,7 +2,6 @@
 using MongoDB.Entities;
 using SearchService.Models;
 using SearchService.RequestHelpers;
-using ZstdSharp.Unsafe;
 
 namespace SearchService.Controller;
 
@@ -11,11 +10,9 @@ namespace SearchService.Controller;
 public class SearchController : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<List<Item>>> SearchItem([FromQuery] SearchParams searchParams)
+    public async Task<ActionResult<List<Item>>> SearchItems([FromQuery] SearchParams searchParams)
     {
         var query = DB.PagedSearch<Item, Item>();
-
-        query.Sort(x => x.Ascending(a => a.Make));
 
         if (!string.IsNullOrEmpty(searchParams.SearchTerm))
         {
@@ -24,7 +21,8 @@ public class SearchController : ControllerBase
 
         query = searchParams.OrderBy switch
         {
-            "make" => query.Sort(x => x.Ascending(a => a.Make)),
+            "make" => query.Sort(x => x.Ascending(a => a.Make))
+                .Sort(x => x.Ascending(a => a.Model)),
             "new" => query.Sort(x => x.Descending(a => a.CreateAt)),
             _ => query.Sort(x => x.Ascending(a => a.AuctionEnd))
         };
@@ -41,7 +39,6 @@ public class SearchController : ControllerBase
         {
             query.Match(x => x.Seller == searchParams.Seller);
         }
-
 
         if (!string.IsNullOrEmpty(searchParams.Winner))
         {
