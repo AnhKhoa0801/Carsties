@@ -6,8 +6,8 @@ import { Button } from "flowbite-react";
 import { signIn } from "next-auth/react";
 
 type Props = {
-  title: string;
-  subtitle: string;
+  title?: string;
+  subtitle?: string;
   showReset?: boolean;
   showLogin?: boolean;
   callbackUrl?: string;
