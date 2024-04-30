@@ -19,15 +19,17 @@ public class CheckAuctionFinished : BackgroundService
 	protected override async Task ExecuteAsync(CancellationToken stoppingToken)
 	{
 		_logger.LogInformation("======> CheckAuctionFinished is starting.");
+		_logger.LogInformation("======> CheckAuctionFinished is starting.");
 
 		stoppingToken.Register(() =>
 			_logger.LogInformation("======> CheckAuctionFinished is stopping."));
 
 		while (!stoppingToken.IsCancellationRequested)
 		{
+			_logger.LogInformation("======> CheckAuctionFinished is checking {time}.", DateTime.UtcNow);
 			await CheckAuctions(stoppingToken);
 
-			await Task.Delay(5000, stoppingToken);
+			await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken);
 		}
 	}
 

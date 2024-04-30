@@ -12,13 +12,15 @@ namespace BiddingService;
 public class BidsController : ControllerBase
 {
 	private readonly IMapper _mapper;
-    private readonly IPublishEndpoint _publishEndpoint;
+	private readonly IPublishEndpoint _publishEndpoint;
+	private readonly GrpcAuctionClient _client;
 
-    public BidsController(IMapper mapper, IPublishEndpoint publishEndpoint)
+	public BidsController(IMapper mapper, IPublishEndpoint publishEndpoint, GrpcAuctionClient client)
 	{
 		_mapper = mapper;
-        _publishEndpoint = publishEndpoint;
-    }
+		_publishEndpoint = publishEndpoint;
+		_client = client;
+	}
 	[Authorize]
 	[HttpPost]
 	public async Task<ActionResult<BidDto>> PlaceBid(string auctionId, int amount)
@@ -27,7 +29,9 @@ public class BidsController : ControllerBase
 
 		if (auction is null)
 		{
-			return NotFound();
+			auction = _client.GetAuction(auctionId);
+
+			if (auction is null) return BadRequest("Auction not found");
 		}
 
 		if (auction.Seller == User.Identity.Name)
