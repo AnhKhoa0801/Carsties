@@ -57,12 +57,12 @@ public class BidsController : ControllerBase
 						.Sort(b => b.Descending(x => x.Amount))
 						.ExecuteFirstAsync();
 
-			if (highBid is not null && highBid.Amount >= amount || highBid is null)
+			if (highBid is not null && highBid.Amount <= amount || highBid is null)
 			{
 				bid.BidStatus = amount > auction.ReservePrice ? BidStatus.Accepted : BidStatus.AcceptedBelowReserve;
 			}
 
-			if (highBid is not null && highBid.Amount < amount)
+			if (highBid is not null && highBid.Amount > amount)
 			{
 				bid.BidStatus = BidStatus.TooLow;
 			}

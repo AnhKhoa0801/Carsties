@@ -1,4 +1,5 @@
 import React from "react";
+import { numberWithCommas } from "../lib/numberWithComma";
 
 type Props = {
   amount?: number;
@@ -6,7 +7,7 @@ type Props = {
 };
 
 export default function CurrentBid({ amount, reservePrice }: Props) {
-  const text = amount ? "$" + amount : "no bids yet";
+  const text = amount ? "$" + numberWithCommas(amount) : "no bids yet";
   const color = amount
     ? amount > reservePrice
       ? "bg-green-600"
