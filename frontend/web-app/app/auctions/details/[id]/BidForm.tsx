@@ -21,6 +21,10 @@ export default function BidForm({ autctionId, highBid }: Props) {
   const addBid = useBidStore((state) => state.addBid);
 
   function onSubmit(data: FieldValues) {
+    if (data.amount <= highBid) {
+      reset();
+      return toast.error(`bid must be higher than the current highest bid`);
+    }
     placedBidForAuction(autctionId, data.amount)
       .then((bid) => {
         if (bid.error) throw bid.error;
