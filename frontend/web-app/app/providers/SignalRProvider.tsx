@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import AuctionCreatedToast from "../components/AuctionCreatedToast";
 import AuctionFinishedToast from "../components/AuctionFinishedToast";
 import { getDetailsViewData } from "../actions/auctionActions";
+import AuctionBidToast from "../components/AuctionBidToast";
 
 type Props = {
   children: ReactNode;
@@ -46,6 +47,13 @@ export default function SignalRProvider({ children, user }: Props) {
             console.log("BidPlaced", bid);
             if (bid.bidStatus.includes("Accepted")) {
               setCurretnPrice(bid.auctionId, bid.amount);
+              getDetailsViewData(bid.auctionId).then((auction) => {
+                if (user?.username == auction.seller) {
+                  return toast(<AuctionBidToast auction={auction} />, {
+                    duration: 10000,
+                  });
+                }
+              });
             }
             addBid(bid);
           });
